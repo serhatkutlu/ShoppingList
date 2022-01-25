@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import com.msk.shoppinglist.Other.Constants.BASE_URL
 import com.msk.shoppinglist.Other.Constants.DATABASE_NAME
+import com.msk.shoppinglist.Repositories.DefaultShoppingRepository
+import com.msk.shoppinglist.Repositories.ShoppingRepository
+import com.msk.shoppinglist.data.local.ShoppingDAO
 import com.msk.shoppinglist.data.local.ShoppingItem
 import com.msk.shoppinglist.data.local.ShoppingItemDatabase
 import com.msk.shoppinglist.data.remote.PixabayAPI
@@ -19,6 +22,15 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Singleton
+    @Provides
+    fun provideDefaultShoppingRepository(
+        dao:ShoppingDAO,
+        api: PixabayAPI
+    )=DefaultShoppingRepository(dao,api) as ShoppingRepository
+
+
 
     @Singleton
     @Provides
