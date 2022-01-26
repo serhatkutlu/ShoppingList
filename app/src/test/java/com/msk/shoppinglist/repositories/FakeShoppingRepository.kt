@@ -39,7 +39,7 @@ class FakeShoppingRepository:ShoppingRepository {
     }
 
     override  fun observeTotalPrice(): LiveData<Float> {
-        return observeTotalPrice()
+        return observableTotalPrice
     }
 
     override suspend fun searchforImage(imageQuery: String): Resource<ImageResponse> {
